@@ -15,7 +15,7 @@ const assistant = new AssistantV2({
 });
 
 // Configuração do bot do Telegram
-const bot = new Telegraf(process.env.TELEGRAM_TOKEN);
+const secBot = new Telegraf(process.env.TELEGRAM_TOKEN);
 
 // Função para lidar com a resposta do Watson Assistant
 const handleWatsonResponse = async (ctx, userInput) => {
@@ -46,10 +46,10 @@ const handleWatsonResponse = async (ctx, userInput) => {
 };
 
 // Escuta por mensagens de texto no Telegram
-bot.on("text", (ctx) => {
+secBot.on("text", (ctx) => {
   const userInput = ctx.update.message.text;
   handleWatsonResponse(ctx, userInput);
 });
 
 // Inicia o bot do Telegram
-bot.launch(console.log("\x1b[36m%s\x1b[0m", "BOT UP..."));
+secBot.launch(console.log("\x1b[36m%s\x1b[0m", "BOT UP..."));
